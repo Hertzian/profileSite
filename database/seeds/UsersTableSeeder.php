@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'bio' => 'Creative, always on the move, always updating me.',
             'phone' => '33-2385-4666',
             'img' => '/none',
-            'active' => 1,
+            // 'active' => 1,
             'email' => 'tallitosan@gmail.com',
             'password' => Hash::make('12345678'),
         ]);

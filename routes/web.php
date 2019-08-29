@@ -21,14 +21,13 @@ Route::get('/work', 'WorksController@work');
 Route::get('/contact', 'UsersController@contact');
 
 Route::prefix('admin')->group(function(){
-    
-    
+    Route::get('/','UsersController@profileView');
     Route::get('/profile','UsersController@profileView');
     Route::post('/profile','UsersController@updateProfile');
     Route::get('/jobs','JobsController@jobsView');
-    Route::post('/jobs','JobsController@updateJobs');
+    Route::post('/job/{id}','JobsController@updateJobs');
     Route::get('/work','WorksController@workView');
-    Route::post('/work','WorksController@updateWork');
+    Route::post('/work/{id}','WorksController@updateWork');
 });
 
 // Route::get('/admin', 'HomeController@index')->name('home');

@@ -18,7 +18,6 @@ class CreateJobsTable extends Migration
             $table->string('company');
             $table->string('job');
             $table->string('assignment');
-            $table->boolean('show');
             $table->timestamps();
         });
     }

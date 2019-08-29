@@ -27,7 +27,7 @@ class UsersController extends Controller
 
     public function about(){
         $user = User::find(1);
-        $jobs = Job::where('show', 1)->paginate(3);
+        $jobs = Job::paginate(3);
 
         return view('frontend.about', [
             'user' => $user,
@@ -63,22 +63,33 @@ class UsersController extends Controller
             'bio' => 'required',
             'phone' => 'required',
 
-            // 'img' => 'required|image',
+            
+            'img' => 'image|max:1999',
 
             // 'email' => 'required',
             'password' => 'min:8'
         ]);
+
+        $fileNameWithExt = $request->file('img')->getClientOriginalName();
+        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+        $extension = $request->file('img')->getClientOriginalExtension();
+        $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+        $path = $request->file('img')->storeAs('public/img', $fileNameToStore);
 
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');
         $user->profesion = $request->input('profesion');
         $user->bio = $request->input('bio');
         $user->phone = $request->input('phone');
-
+        // $user->active = $request->input('active');
+        
         // $user->img = $request->input('img');
-
+        
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
+        $user->img = $fileNameToStore;
+
+        // dd($fileNameToStore);
 
         $user->update();
 

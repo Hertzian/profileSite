@@ -19,7 +19,7 @@ class CreateWorksTable extends Migration
             $table->string('img');
             $table->string('url');
             $table->string('github');
-            $table->boolean('show')->default(1);
+            // $table->boolean('show')->default(1);
             $table->timestamps();
         });
     }

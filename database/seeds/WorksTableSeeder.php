@@ -17,7 +17,7 @@ class WorksTableSeeder extends Seeder
             'img' => '/none',
             'url' => 'www.warawara.com',
             'github' => 'www.github.com',
-            'show' => 1,
+            // 'show' => 1,
             'user_id' => 1
         ]);
 
@@ -26,7 +26,7 @@ class WorksTableSeeder extends Seeder
             'img' => '/none',
             'url' => 'www.warawara.com',
             'github' => 'www.github.com',
-            'show' => 1,
+            // 'show' => 1,
             'user_id' => 1,
         ]);
 
@@ -35,7 +35,7 @@ class WorksTableSeeder extends Seeder
             'img' => '/none',
             'url' => 'www.warawara.com',
             'github' => 'www.github.com',
-            'show' => 1,
+            // 'show' => 1,
             'user_id' => 1,
         ]);
 
@@ -44,7 +44,7 @@ class WorksTableSeeder extends Seeder
             'img' => '/none',
             'url' => 'www.warawara.com',
             'github' => 'www.github.com',
-            'show' => 1,
+            // 'show' => 1,
             'user_id' => 1,
         ]);
     }

@@ -4,13 +4,12 @@
 
 <h1>Profile</h1>
 
-<!-- Area Chart Example-->
 <div class="card mb-3 col-md-6 px-0">
     <div class="card-header">
-        <i class="fa fa-user"></i>
-        Edit your data</div>
+        <i class="fa fa-user"></i> Edit your data
+    </div>
     <div class="card-body">
-        <form action="{{ url('/admin/profile') }}" method="post">
+        <form action="{{ url('/admin/profile') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name">Name:</label>
@@ -33,16 +32,12 @@
                 <input type="text" name="phone" value="{{ $user->phone }}" id="phone" class="form-control">
             </div>
             <div class="form-group">
-                <label for="img">Image:</label>
-                <input type="file" id="img" name="img" class="form-control-file">
-            </div>
-            <div class="form-check">
-                <input type="checkbox" name="active" class="form-check-input" id="active">
-                <label class="form-check-label" for="exampleCheck1">Active?</label>
-            </div>
-            <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="text" name="email" value="{{ $user->email }}" id="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="img">Image:</label>
+                <input type="file" id="img" name="img" class="form-control-file">
             </div>
             <button type="submit" class="btn btn-primary mb-2">Submit</button>
         </form>
