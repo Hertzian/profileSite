@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
             'phone' => '33-2385-4666',
             'img' => '/none',
             // 'active' => 1,
-            'email' => 'tallitosan@gmail.com',
+            'email' => 'admin@admin.com',
             'password' => Hash::make('12345678'),
         ]);
     }

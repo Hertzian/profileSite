@@ -1,10 +1,11 @@
 @extends('backend.layouts.applogin')
-
 @section('content')
+
+@include('backend.partials.message')
 
 <div class="container">
     <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Login</div>
+        <div class="card-header">Welcome!</div>
         <div class="card-body">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -30,13 +31,13 @@
                         <label for="password">{{ __('Password') }}</label>
                     </div>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <div class="checkbox">
                         <label for="remember">
                         <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>Remember me
                         </label>
                     </div>
-                </div>
+                </div> --}}
 
                 <button type="submit" class="btn btn-primary btn-block">
                     {{ __('Login') }}

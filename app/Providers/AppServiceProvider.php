@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
@@ -29,8 +30,9 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         view()->composer('*', function (View $view){
-            if (Auth::user()) {
-                $user = Auth::user();
+            // if (Auth::user()) {
+            if (1 == 1) {
+                $user = User::find(1);
                 $photo = $user->img;
                 $view->with('photo', $photo);
             }
