@@ -6,7 +6,7 @@
     </div>
     <nav class="menu">
         <div class="menu-branding">
-            <div class="portrait" style="background:{{ asset('img/' . $photo) }};"></div>
+            <div class="portrait" style="background: url('storage/img/{{  $photo }}');"></div>
         </div>     
         <ul class="menu-nav">
             {{-- <li class="nav-item @if(Request::path() == '/') current @endif">

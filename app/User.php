@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'surname','profesion','bio','phone','img','email','password',
+        'name', 'surname','profesion','bio','phone','img','background','email','password',
     ];
 
     /**
@@ -36,6 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // protected $rules = [
+    //     'email_address' => 'sometimes|required|email|unique:users',
+    // ];
 
     public function Job(){
         return $this->hasMany('App\Job');

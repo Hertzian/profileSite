@@ -17,7 +17,7 @@
         Let me tell you a few things.
     </h2>
     <div class="about-info">
-        <img src="{{('storage/app/img/' . $user->img)}}" alt="Lalo Aguilar" class="bio-image">
+        <img src="{{('storage/img/' . $user->img)}}" alt="Lalo Aguilar" class="bio-image">
         <div class="bio">
             <h3 class="text-secondary">BIO</h3>                
             <p>Creative, always on the move, always updating me.</p>

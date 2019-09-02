@@ -36,8 +36,12 @@
                 <input type="text" name="email" value="{{ $user->email }}" id="email" class="form-control">
             </div>
             <div class="form-group">
-                <label for="img">Image:</label>
+                <label for="img">Profile Image:</label>
                 <input type="file" id="img" name="img" class="form-control-file">
+            </div>
+            <div class="form-group">
+                <label for="background">Background Image:</label>
+                <input type="file" id="background" name="background" class="form-control-file">
             </div>
             <button type="submit" class="btn btn-primary mb-2">Submit</button>
         </form>

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('bio');
             $table->string('phone');
             $table->string('img');
+            $table->string('background');
             // $table->string('active')->default('active');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

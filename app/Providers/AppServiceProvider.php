@@ -30,9 +30,8 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         view()->composer('*', function (View $view){
-            // if (Auth::user()) {
             if (1 == 1) {
-                $user = User::find(1);
+                $user = User::firstOrFail();
                 $photo = $user->img;
                 $view->with('photo', $photo);
             }

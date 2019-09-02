@@ -1,8 +1,14 @@
 @extends('frontend.layouts.app')
 
 @section('body')
-    bg-img
+bg-img
 @endsection
+
+@section('background')
+    style="background: url('storage/img/{{  $user->background }}');"
+@endsection
+
+
 
 @section('main')
     home
