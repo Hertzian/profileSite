@@ -31,12 +31,25 @@ class WorksController extends Controller
     public function updateWork(Request $request, $id){
         $work = Work::find($id);
 
+        // dd(
+
         $this->validate($request, [
             'name' => 'required',
-            // image
+            'img' => 'image|max:1999',
             'url' => 'required',
             'github' => 'required'
         ]);
+
+        // );
+
+        if ($request->file('img')) {
+            $fileNameWithExt = $request->file('img')->getClientOriginalName();
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('img')->getClientOriginalExtension();
+            $imgFileNameToStore = $fileName . '_' . time() . '.' . $extension;
+            $path = $request->file('img')->storeAs('public/img', $imgFileNameToStore);
+            $work->img = $imgFileNameToStore;
+        }
 
         $work->name = $request->input('name');
         $work->url = $request->input('url');

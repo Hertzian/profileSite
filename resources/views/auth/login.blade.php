@@ -1,7 +1,7 @@
 @extends('backend.layouts.applogin')
 @section('content')
 
-@include('backend.partials.message')
+{{-- @include('backend.partials.message') --}}
 
 <div class="container">
     <div class="card card-login mx-auto mt-5">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input id="password" id="password"type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

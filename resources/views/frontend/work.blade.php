@@ -21,7 +21,7 @@
             @foreach ($works as $work)
                 <div class="item">
                     <a href="{{ $work->img }}">
-                        <img src="img/projects/project1.jpg" alt="Project">
+                        <img src="storage/img/{{ $work->img }}" alt="Project">
                     </a>
                     <a href="{{ $work->url }}" class="btn-light">
                         <i class="fas fa-eye"></i> {{ $work->name }}

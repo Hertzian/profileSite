@@ -68,7 +68,7 @@
                     </div>
                     <div class="modal-body">
                 
-                        <form action="{{ url('/admin/work/' . $work->id) }}" method="post">
+                        <form action="{{ url('/admin/work/' . $work->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name:</label>

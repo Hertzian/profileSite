@@ -12,7 +12,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <title>Admin</title>
 
-<link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/gif" sizes="16x16"><link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/gif" sizes="16x16">
+<link rel="icon" href="{{ asset('fi/favicon.ico') }}" type="image/gif" sizes="16x16"><link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/gif" sizes="16x16">
 
 <!-- Custom fonts for this template-->
 {{-- <link href="{{ asset('css/all.min.css')}}" rel="stylesheet" type="text/css"> --}}

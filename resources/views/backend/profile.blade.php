@@ -43,6 +43,10 @@
                 <label for="background">Background Image:</label>
                 <input type="file" id="background" name="background" class="form-control-file">
             </div>
+            <div class="form-group">
+                <label for="password">password:</label>
+                <input type="password" name="password" id="password" class="form-control">
+            </div>
             <button type="submit" class="btn btn-primary mb-2">Submit</button>
         </form>
     </div>

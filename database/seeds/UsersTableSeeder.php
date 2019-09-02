@@ -23,6 +23,7 @@ class UsersTableSeeder extends Seeder
             // 'active' => 1,
             'email' => 'admin@admin.com',
             'password' => Hash::make('12345678'),
+            // 'password' => bcrypt('12345678'),
         ]);
     }
 }

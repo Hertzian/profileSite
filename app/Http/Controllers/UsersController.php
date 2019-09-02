@@ -19,7 +19,7 @@ class UsersController extends Controller
     }
 
     public function index(){
-        $user = User::find(1);
+        $user = User::firstOrFail();
 
         return view('frontend.index', [
             'user' => $user
@@ -27,7 +27,7 @@ class UsersController extends Controller
     }
 
     public function about(){
-        $user = User::find(1);
+        $user = User::firstOrFail();
         $jobs = Job::paginate(3);
 
         return view('frontend.about', [
@@ -37,7 +37,7 @@ class UsersController extends Controller
     }
 
     public function contact(){
-        $user = User::find(1);
+        $user = User::firstOrFail();
 
         return view('frontend.contact', [
             'user' => $user
@@ -55,8 +55,6 @@ class UsersController extends Controller
     public function updateProfile(Request $request){
         $user = Auth::user();
 
-        // dd($user);
-
         $this->validate($request,[
             'name' => 'required',
             'surname' => 'required',
@@ -66,9 +64,10 @@ class UsersController extends Controller
             'img' => 'image|max:1999',
             'background' => 'image|max:1999',
 
+            // 'email' => 'unique:users,email,' . $user->id,
             'email' => ['required','email',Rule::unique('users','email')->ignore($user->id)],
 
-            'password' => 'min:8'
+            'password' => 'nullable|min:8'
         ]);
 
         if ($request->file('img')) {
@@ -99,8 +98,12 @@ class UsersController extends Controller
         // $user->img = $request->input('img');
         
         $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
-        
+
+        if ($request->input('password')) {
+            $user->password = Hash::make($request->input('password'));
+        }
+
+        // dd($request->input('password'));
 
         $user->update();
 
