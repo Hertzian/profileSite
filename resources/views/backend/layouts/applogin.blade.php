@@ -16,7 +16,8 @@
 
 <!-- Custom fonts for this template-->
 {{-- <link href="{{ asset('css/all.min.css')}}" rel="stylesheet" type="text/css"> --}}
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+{{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> --}}
+<script src="https://kit.fontawesome.com/bc09df0ab2.js" crossorigin="anonymous"></script>
 <!-- Page level plugin CSS-->
 <link href="{{ asset('css/dataTables.bootstrap4.css') }}" rel="stylesheet">
 <!-- Custom styles for this template-->
@@ -31,7 +32,7 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    {{-- <script src="{{ asset('js/sb-admin.min.js') }}"></script> --}}
+    <script src="{{ asset('js/back.js') }}"></script>
     
     {{-- @yield('scripts') --}}
     

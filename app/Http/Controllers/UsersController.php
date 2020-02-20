@@ -18,10 +18,12 @@ class UsersController extends Controller
             ]);
     }
 
+    // Frontend 2019
     public function index(){
         $user = User::firstOrFail();
 
-        return view('frontend.index', [
+        // return view('frontend.index', [
+        return view('frontend.2020-1.layouts.index', [
             'user' => $user
         ]);
     }
@@ -44,6 +46,7 @@ class UsersController extends Controller
         ]);
     }
 
+    // Backend
     public function profileView(){
         $user = Auth::user();
 
@@ -58,6 +61,8 @@ class UsersController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'surname' => 'required',
+            'github' => 'required',
+            'linkedin' => 'required',
             'profesion' => 'required',
             'bio' => 'required',
             'phone' => 'required',
@@ -90,6 +95,9 @@ class UsersController extends Controller
 
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');
+        $user->github = $request->input('github');
+        $user->github = $request->input('github');
+        $user->linkedim = $request->input('linkedim');
         $user->profesion = $request->input('profesion');
         $user->bio = $request->input('bio');
         $user->phone = $request->input('phone');
@@ -102,8 +110,6 @@ class UsersController extends Controller
         if ($request->input('password')) {
             $user->password = Hash::make($request->input('password'));
         }
-
-        // dd($request->input('password'));
 
         $user->update();
 

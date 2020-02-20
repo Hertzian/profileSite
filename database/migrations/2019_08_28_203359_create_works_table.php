@@ -17,9 +17,11 @@ class CreateWorksTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('img');
-            $table->string('url');
+            $table->longText('description1');
+            $table->longText('description2');
+            $table->longText('url');
             $table->string('github');
-            // $table->boolean('show')->default(1);
+            $table->boolean('show')->default(false);
             $table->timestamps();
         });
     }

@@ -17,8 +17,10 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('surname');
-            $table->string('profesion');
-            $table->string('bio');
+            $table->string('github');
+            $table->string('linkedin');
+            $table->longText('profesion');
+            $table->longText('bio');
             $table->string('phone');
             $table->string('img');
             $table->string('background');

@@ -15,19 +15,26 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'UsersController@index');
-Route::get('/about', 'UsersController@about');
-Route::get('/work', 'WorksController@work');
-Route::get('/contact', 'UsersController@contact');
+Route::get('/', 'Interface2020_1Controller@index');
+Route::get('/work/{workId}', 'Interface2020_1Controller@workDetail');
+// Route::get('/', 'UsersController@index');
+// Route::get('/about', 'UsersController@about');
+// Route::get('/work', 'WorksController@work');
+// Route::get('/contact', 'UsersController@contact');
 
 Route::prefix('admin')->group(function(){
     Route::get('/','UsersController@profileView');
     Route::get('/profile','UsersController@profileView');
     Route::post('/profile','UsersController@updateProfile');
     Route::get('/jobs','JobsController@jobsView');
+    Route::post('/addjob','JobsController@newJob');
     Route::post('/job/{id}','JobsController@updateJobs');
     Route::get('/work','WorksController@workView');
+    Route::post('/addwork','WorksController@addWork');
     Route::post('/work/{id}','WorksController@updateWork');
+    Route::get('/skills', 'SkillsController@skillView');
+    Route::post('/addskill', 'SkillsController@newSkill');
+    Route::post('/skill/{skillId}', 'SkillsController@updateSkill');
 });
 
 // Route::get('/admin', 'HomeController@index')->name('home');

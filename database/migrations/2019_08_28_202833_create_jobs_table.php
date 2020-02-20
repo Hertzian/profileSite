@@ -17,7 +17,8 @@ class CreateJobsTable extends Migration
             $table->bigIncrements('id');
             $table->string('company');
             $table->string('job');
-            $table->string('assignment');
+            $table->longText('assignment');
+            $table->boolean('show')->default(false);
             $table->timestamps();
         });
     }

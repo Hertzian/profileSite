@@ -16,21 +16,21 @@ class JobsTableSeeder extends Seeder
             'company' => 'Dynamic Solutions',
             'job' => 'FullStack Dev',
             'assignment' => 'My main work, fullstack development, responsive, ecommerce, wordpress.',
-            // 'show' => 1,
+            'show' => false,
             'user_id' => 1,
         ]);
         $job2 = Job::create([
             'company' => 'Biagsa, inmobiliaria',
             'job' => 'FullStack Dev',
             'assignment' => 'Here, full stack development.',
-            // 'show' => 1,
+            'show' => false,
             'user_id' => 1,
         ]);
         $job3 = Job::create([
             'company' => 'Crítica Jalisco, semanario político',
             'job' => 'Frontend, Webmaster',
             'assignment' => 'Frontend development, content management, political news publishing.',
-            // 'show' => 1,
+            'show' => false,
             'user_id' => 1,
         ]);
     }

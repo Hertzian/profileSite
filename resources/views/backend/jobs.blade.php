@@ -10,6 +10,7 @@
         <i class="fas fa-fw fa-chart-area"></i>
         Edit your Jobs</div>
     <div class="card-body">
+        <a href="" data-toggle="modal" data-target="#newJob" class="btn btn-primary mb-2">Add Job</a>
         <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
@@ -18,6 +19,7 @@
                 <th>Company</th>
                 <th>Job</th>
                 <th>Assignment</th>
+                <th>Show</th>
                 <th>actions</th>
             </tr>
             </thead>
@@ -27,6 +29,7 @@
                 <th>Company</th>
                 <th>Job</th>
                 <th>Assignment</th>
+                <th>Show</th>
                 <th>actions</th>
             </tr>
             </tfoot>
@@ -39,6 +42,15 @@
                         <td>{{ $job->company }}</td>
                         <td>{{ $job->job }}</td>
                         <td>{{ $job->assignment }}</td>
+
+                        @if($job->show)
+                        <td class="text-success">
+                            <i class="far fa-check-circle"></i>
+                        @else
+                        <td class="text-danger">
+                            <i class="far fa-times-circle"></i>
+                            @endif
+                        </td>
                         <td><a href="#" data-toggle="modal" data-target="#modal{{ $job->id }}" class="btn btn-primary">Details</a></td>
                         
                     </tr>                        
@@ -61,7 +73,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal">Edit this job:</h5>
+                    <h5 class="modal-title" id="modal">Edit {{ $job->company }}:</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                     </button>
@@ -72,15 +84,32 @@
                         @csrf
                         <div class="form-group">
                             <label for="company">Company:</label>
-                            <input type="text" name="company" value="{{ $job->company }}" id="company" class="form-control">
+                            <input type="text" name="company" value="{{ $job->company }}" id="company-{{ $job->id }}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="job">Job:</label>
-                            <input type="text" name="job" value="{{ $job->job }}" id="job" class="form-control">
+                            <input type="text" name="job" value="{{ $job->job }}" id="job-{{ $job->id }}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="assignment">Assignment:</label>
-                            <input type="text" name="assignment" value="{{ $job->assignment }}" id="assignment" class="form-control">
+                            <input type="text" name="assignment" value="{{ $job->assignment }}" id="assignment-{{ $job->id }}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="assignment">Do you want to show?</label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="show" id="showYes-{{ $job->id }}" value="1" {{ $job->show ? 'checked' : '' }}>
+                                <label class="form-check-label" for="showYes">
+                                  Yes.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="show" id="showNo-{{ $job->id }}" value="0" {{ !$job->show ? 'checked' : '' }}>
+                                <label class="form-check-label" for="showNo">
+                                  Nope.
+                                </label>
+                            </div>
+
                         </div>
                         {{-- <div class="form-group">
                             <label for="show">show:</label>
@@ -99,5 +128,58 @@
 
     @endforeach
 @endif
+
+<div class="modal fade" id="newJob" tabindex="-1" role="dialog" aria-labelledby="newJob" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modal">Add Job:</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+    
+            <form action="{{ url('/admin/addjob') }}" method="post">
+                @csrf
+                <div class="form-group">
+                    <label for="company">Company:</label>
+                    <input type="text" name="company" placeholder="Job Company" id="company" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="job">Job:</label>
+                    <input type="text" name="job" placeholder="Job" id="job" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="assignment">Assignment:</label>
+                    <input type="text" name="assignment" placeholder="Assignment" id="assignment" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="assignment">Do you want to show?</label>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="show" id="showYes" value="1">
+                        <label class="form-check-label" for="showYes">
+                          Yes.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="show" id="showNo" value="0">
+                        <label class="form-check-label" for="showNo">
+                          Nope.
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+            
+            
+            <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection

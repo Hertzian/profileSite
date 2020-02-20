@@ -5,7 +5,7 @@
 
 <div class="container">
     <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Welcome!</div>
+        <div class="card-header">Welcome Master</div>
         <div class="card-body">
             <form method="POST" action="{{ route('login') }}">
                 @csrf

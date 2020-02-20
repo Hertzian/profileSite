@@ -5,7 +5,7 @@ bg-img
 @endsection
 
 @section('background')
-    style="background: url('storage/img/{{  $user->background }}');"
+    {{-- style="background: url('storage/img/{{  $user->background }}');" --}}
 @endsection
 
 

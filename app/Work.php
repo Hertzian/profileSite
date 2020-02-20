@@ -9,7 +9,11 @@ class Work extends Model
     protected $table = 'works';
 
     protected $fillable = [
-        'name', 'img', 'url', 'github'
+        'name',
+        'img',
+        'url',
+        'github',
+        'show'
     ];
 
     public function user(){
