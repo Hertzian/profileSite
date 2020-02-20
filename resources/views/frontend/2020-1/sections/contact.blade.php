@@ -5,7 +5,7 @@
             <span>email: </span><a class="footer-link" href="mailto:{{ $user->email }}">{{ $user->email }}</a>
         </div>
         <div>
-            <span>phone: </span>{{ $user->phone }}
+            <span>phone: </span><a class="footer-link" href="tel:{{ $user->phone }}"></a>{{ $user->phone }}
         </div>
     </div>
 </section>
