@@ -97,7 +97,7 @@ class UsersController extends Controller
         $user->surname = $request->input('surname');
         $user->github = $request->input('github');
         $user->github = $request->input('github');
-        $user->linkedim = $request->input('linkedim');
+        $user->linkedin = $request->input('linkedin');
         $user->profesion = $request->input('profesion');
         $user->bio = $request->input('bio');
         $user->phone = $request->input('phone');
