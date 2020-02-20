@@ -19,6 +19,7 @@ class JobsTableSeeder extends Seeder
             'show' => false,
             'user_id' => 1,
         ]);
+
         $job2 = Job::create([
             'company' => 'Biagsa, inmobiliaria',
             'job' => 'FullStack Dev',
@@ -26,6 +27,7 @@ class JobsTableSeeder extends Seeder
             'show' => false,
             'user_id' => 1,
         ]);
+        
         $job3 = Job::create([
             'company' => 'Crítica Jalisco, semanario político',
             'job' => 'Frontend, Webmaster',
