@@ -30,10 +30,17 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         view()->composer('*', function (View $view){
-            if (1 == 1) {
+            if (true) {
                 $user = User::firstOrFail();
                 $photo = $user->img;
-                $view->with('photo', $photo);
+                $github = $user->github;
+                $linkedin = $user->linkedin;
+
+                $view->with([
+                    'photo' => $photo,
+                    'github' => $github,
+                    'linkedin' => $linkedin
+                ]);
             }
         });
     }

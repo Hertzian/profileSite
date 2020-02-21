@@ -20,7 +20,7 @@ class WorksTableSeeder extends Seeder
             'description2' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos adipisci quia consectetur tempora ipsum, quae debitis doloremque rem expedita fuga at eius harum laboriosam laborum iusto, facilis voluptate neque beatae.',
 
             'github' => 'www.github.com',
-            'show' => false,
+            'show' => true,
             'user_id' => 1
         ]);
 
@@ -32,7 +32,7 @@ class WorksTableSeeder extends Seeder
             'description2' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos adipisci quia consectetur tempora ipsum, quae debitis doloremque rem expedita fuga at eius harum laboriosam laborum iusto, facilis voluptate neque beatae.',
 
             'github' => 'www.github.com',
-            'show' => false,
+            'show' => true,
             'user_id' => 1,
         ]);
 
@@ -44,7 +44,7 @@ class WorksTableSeeder extends Seeder
             'description2' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos adipisci quia consectetur tempora ipsum, quae debitis doloremque rem expedita fuga at eius harum laboriosam laborum iusto, facilis voluptate neque beatae.',
 
             'github' => 'www.github.com',
-            'show' => false,
+            'show' => true,
             'user_id' => 1,
         ]);
 
@@ -56,7 +56,7 @@ class WorksTableSeeder extends Seeder
             'description2' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos adipisci quia consectetur tempora ipsum, quae debitis doloremque rem expedita fuga at eius harum laboriosam laborum iusto, facilis voluptate neque beatae.',
 
             'github' => 'www.github.com',
-            'show' => false,
+            'show' => true,
             'user_id' => 1,
         ]);
     }

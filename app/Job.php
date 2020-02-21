@@ -9,7 +9,9 @@ class Job extends Model
     protected $table = 'jobs';
 
     protected $fillable = [
-        'name',
+        'company',
+        'job',
+        'year',
         'assignment',
         'show'
     ];

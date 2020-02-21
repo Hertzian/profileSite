@@ -17,6 +17,8 @@
 
 Route::get('/', 'Interface2020_1Controller@index');
 Route::get('/work/{workId}', 'Interface2020_1Controller@workDetail');
+Route::get('/resume', 'Interface2020_1Controller@pdfResume');
+Route::get('/download', 'Interface2020_1Controller@pdfResumeDownload');
 // Route::get('/', 'UsersController@index');
 // Route::get('/about', 'UsersController@about');
 // Route::get('/work', 'WorksController@work');

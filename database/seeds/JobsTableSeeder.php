@@ -15,24 +15,27 @@ class JobsTableSeeder extends Seeder
         $job1 = Job::create([
             'company' => 'Dynamic Solutions',
             'job' => 'FullStack Dev',
-            'assignment' => 'My main work, fullstack development, responsive, ecommerce, wordpress.',
-            'show' => false,
+            'year' => '2019',
+            'assignment' => 'My main work, fullstack development, customs CRM´s development, a few sites, responsive, custom ecommerce, wordpress.',
+            'show' => true,
             'user_id' => 1,
         ]);
 
         $job2 = Job::create([
             'company' => 'Biagsa, inmobiliaria',
             'job' => 'FullStack Dev',
-            'assignment' => 'Here, full stack development.',
-            'show' => false,
+            'year' => '2018',
+            'assignment' => 'Here, full stack development, mainly helping to develop two customs CRM´s, and maintaince of company app',
+            'show' => true,
             'user_id' => 1,
         ]);
         
         $job3 = Job::create([
             'company' => 'Crítica Jalisco, semanario político',
             'job' => 'Frontend, Webmaster',
-            'assignment' => 'Frontend development, content management, political news publishing.',
-            'show' => false,
+            'year' => '2016',
+            'assignment' => 'Frontend development, the main markup of the site, custom css, responsive, added new functionalities, content management, political news publishing.',
+            'show' => true,
             'user_id' => 1,
         ]);
     }

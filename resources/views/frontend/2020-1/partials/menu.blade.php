@@ -23,6 +23,9 @@
             <li class="nav__item">
                 <a href="{{ url('/') }}#work" class="nav__link">My work</a>
             </li>
+            {{-- <li class="nav__item">
+                <a href="{{ url('/resume') }}" class="nav__link">Resume</a>
+            </li> --}}
             <li class="nav__item">
                 <a href="{{ url('/') }}#contact" class="nav__link">Contact</a>
             </li>

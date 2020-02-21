@@ -7,27 +7,23 @@ use App\User;
 use App\Work;
 use App\Skill;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Auth;
 
 class Interface2020_1Controller extends Controller
 {
-    // public function __contruct(){
-        // $this->user = User::firstOrFail();
-        // $this->job = Job::paginate(3);
-        // $this->work = Work::patinate(4);
-    // }
-
-    public function index(){
+    public function data(){
         $user = $this->hi();
         $jobs = $this->experience();
         $works = $this->work();
         $skills = $this->skill();
 
-        return view('frontend.2020-1.layouts.index')->with([
+        return [
             'user' => $user,
             'jobs' => $jobs,
             'skills' => $skills,
             'works' => $works
-        ]);
+        ];
     }
 
     public function hi(){
@@ -52,6 +48,36 @@ class Interface2020_1Controller extends Controller
         $work = Work::all();
 
         return $work;
+    }
+
+    // data for views
+    public function index(){
+
+        return view('frontend.2020-1.layouts.index')->with([
+            'user' => $this->data()['user'],
+            'jobs' => $this->data()['jobs'],
+            'skills' => $this->data()['skills'],
+            'works' => $this->data()['works'],
+        ]);
+    }
+
+    public function pdfResume(){
+        return view('pdf.resume')->with([
+            'user' => $this->data()['user'],
+            'jobs' => $this->data()['jobs'],
+            'skills' => $this->data()['skills'],
+        ]);
+    }
+
+    public function pdfResumeDownload(){
+        $pdf = PDF::loadview('pdf.resume', [
+            'user' => $this->data()['user'],
+            'jobs' => $this->data()['jobs'],
+            'skills' => $this->data()['skills'],
+        ]);
+
+        // return $pdf->download('EduardoAguilarCV.pdf');
+        return $pdf->stream('EduardoAguilarCV.pdf');
     }
 
     public function workDetail($workId){

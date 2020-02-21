@@ -24,6 +24,7 @@ class JobsController extends Controller
         $this->validate($request, [
             'company' => 'required',
             'job' => 'required',
+            'year' => 'required',
             'assignment' => 'required',
             'show' => 'required'
         ]);
@@ -33,6 +34,7 @@ class JobsController extends Controller
         $job->user_id = $user->id;
         $job->company = $request->input('company');
         $job->job = $request->input('job');
+        $job->year = $request->input('year');
         $job->assignment = $request->input('assignment');
         $job->show = $request->input('show');
         $job->save();
@@ -46,12 +48,14 @@ class JobsController extends Controller
         $this->validate($request, [
             'company' => 'required',
             'job' => 'required',
+            'year' => 'required',
             'assignment' => 'required',
             'show' => 'required'
         ]);
 
         $job->company = $request->input('company');
         $job->job = $request->input('job');
+        $job->year = $request->input('year');
         $job->assignment = $request->input('assignment');
         $job->show = $request->input('show');
         $job->update();

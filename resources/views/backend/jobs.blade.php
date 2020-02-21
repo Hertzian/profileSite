@@ -18,7 +18,8 @@
                 <th>#</th>
                 <th>Company</th>
                 <th>Job</th>
-                <th>Assignment</th>
+                <th>Year</th>
+                {{-- <th>Assignment</th> --}}
                 <th>Show</th>
                 <th>actions</th>
             </tr>
@@ -28,7 +29,8 @@
                 <th>#</th>
                 <th>Company</th>
                 <th>Job</th>
-                <th>Assignment</th>
+                <th>Year</th>
+                {{-- <th>Assignment</th> --}}
                 <th>Show</th>
                 <th>actions</th>
             </tr>
@@ -41,7 +43,8 @@
                         <td>{{ $job->id }}</td>
                         <td>{{ $job->company }}</td>
                         <td>{{ $job->job }}</td>
-                        <td>{{ $job->assignment }}</td>
+                        <td>{{ $job->year }}</td>
+                        {{-- <td>{{ $job->assignment }}</td> --}}
 
                         @if($job->show)
                         <td class="text-success">
@@ -89,6 +92,10 @@
                         <div class="form-group">
                             <label for="job">Job:</label>
                             <input type="text" name="job" value="{{ $job->job }}" id="job-{{ $job->id }}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Year:</label>
+                            <input type="text" name="year" value="{{ $job->year }}" id="year-{{ $job->id }}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="assignment">Assignment:</label>
@@ -149,6 +156,10 @@
                 <div class="form-group">
                     <label for="job">Job:</label>
                     <input type="text" name="job" placeholder="Job" id="job" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <input type="text" name="year" placeholder="Year" id="year" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="assignment">Assignment:</label>
