@@ -31,6 +31,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/jobs','JobsController@jobsView');
     Route::post('/addjob','JobsController@newJob');
     Route::post('/job/{id}','JobsController@updateJobs');
+    Route::post('/delete-job/{jobId}','JobsController@deleteJob');
     Route::get('/work','WorksController@workView');
     Route::post('/addwork','WorksController@addWork');
     Route::post('/work/{id}','WorksController@updateWork');

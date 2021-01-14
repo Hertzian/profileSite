@@ -36,7 +36,7 @@
             </tr>
             </tfoot>
             <tbody>
-            
+
             @if (count($jobs) >= 1)
                 @foreach ($jobs as $job)
                     <tr>
@@ -52,16 +52,19 @@
                         @else
                         <td class="text-danger">
                             <i class="far fa-times-circle"></i>
-                            @endif
+                        @endif
                         </td>
-                        <td><a href="#" data-toggle="modal" data-target="#modal{{ $job->id }}" class="btn btn-primary">Details</a></td>
-                        
-                    </tr>                        
-                @endforeach                    
+                        <td>
+                            <a href="#" data-toggle="modal" data-target="#modal{{ $job->id }}" class="btn btn-primary">Details</a>
+                            <a href="#" data-toggle="modal" data-target="#modal-delete{{ $job->id }}" class="btn btn-danger ml-1"><i class="far fa-times-circle"></i></a>
+                        </td>
+
+                    </tr>
+                @endforeach
             @endif
-            
-            
-            
+
+
+
             </tbody>
         </table>
         </div>
@@ -75,60 +78,94 @@
         <div class="modal fade" id="modal{{ $job->id }}" tabindex="-1" role="dialog" aria-labelledby="modal{{ $job->id }}" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal">Edit {{ $job->company }}:</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form action="{{ url('/admin/job/' . $job->id) }}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label for="company">Company:</label>
+                                <input type="text" name="company" value="{{ $job->company }}" id="company-{{ $job->id }}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="job">Job:</label>
+                                <input type="text" name="job" value="{{ $job->job }}" id="job-{{ $job->id }}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="year">Year:</label>
+                                <input type="text" name="year" value="{{ $job->year }}" id="year-{{ $job->id }}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="assignment">Assignment:</label>
+                                <input type="text" name="assignment" value="{{ $job->assignment }}" id="assignment-{{ $job->id }}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="assignment">Do you want to show?</label>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="show" id="showYes-{{ $job->id }}" value="1" {{ $job->show ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="showYes">
+                                    Yes.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="show" id="showNo-{{ $job->id }}" value="0" {{ !$job->show ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="showNo">
+                                    Nope.
+                                    </label>
+                                </div>
+
+                            </div>
+                            {{-- <div class="form-group">
+                                <label for="show">show:</label>
+                                <input type="text" name="show" value="" id="show" class="form-control">
+                            </div> --}}
+                    </div>
+
+
+                    <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal-delete{{ $job->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-delete{{ $job->id }}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal">Edit {{ $job->company }}:</h5>
+                    <h5 class="modal-title" id="modal">Delete {{ $job->company }}:</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">
-            
-                    <form action="{{ url('/admin/job/' . $job->id) }}" method="post">
-                        @csrf
-                        <div class="form-group">
-                            <label for="company">Company:</label>
-                            <input type="text" name="company" value="{{ $job->company }}" id="company-{{ $job->id }}" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="job">Job:</label>
-                            <input type="text" name="job" value="{{ $job->job }}" id="job-{{ $job->id }}" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="year">Year:</label>
-                            <input type="text" name="year" value="{{ $job->year }}" id="year-{{ $job->id }}" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="assignment">Assignment:</label>
-                            <input type="text" name="assignment" value="{{ $job->assignment }}" id="assignment-{{ $job->id }}" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="assignment">Do you want to show?</label>
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="show" id="showYes-{{ $job->id }}" value="1" {{ $job->show ? 'checked' : '' }}>
-                                <label class="form-check-label" for="showYes">
-                                  Yes.
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="show" id="showNo-{{ $job->id }}" value="0" {{ !$job->show ? 'checked' : '' }}>
-                                <label class="form-check-label" for="showNo">
-                                  Nope.
-                                </label>
-                            </div>
+                    <div class="form-group">
+                        <label for="">Are you sure?</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="">This action can't be undone.</label>
+                    </div>
 
+                        <form action="{{ url('/admin/delete-job/' . $job->id) }}" method="POST">
+                            @csrf
+
+
+                </div>
+
+
+                        <div class="modal-footer">
+                            <button type="" class="btn btn-primary mb-2" data-dismiss="modal" aria-label="Close">Cancel</button>
+                            <button type="submit" class="btn btn-danger mb-2">Delete</button>
                         </div>
-                        {{-- <div class="form-group">
-                            <label for="show">show:</label>
-                            <input type="text" name="show" value="" id="show" class="form-control">
-                        </div> --}}
-                    </div>
-                    
-                    
-                    <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -146,7 +183,7 @@
             </button>
         </div>
         <div class="modal-body">
-    
+
             <form action="{{ url('/admin/addjob') }}" method="post">
                 @csrf
                 <div class="form-group">
@@ -183,8 +220,8 @@
 
                 </div>
             </div>
-            
-            
+
+
             <div class="modal-footer">
                     <button type="submit" class="btn btn-primary mb-2">Submit</button>
                 </form>
