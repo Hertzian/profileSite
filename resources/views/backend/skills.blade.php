@@ -32,7 +32,7 @@
             </tr>
             </tfoot>
             <tbody>
-            
+
             @if (count($skills) >= 1)
                 @foreach ($skills as $skill)
                     <tr>
@@ -47,14 +47,17 @@
                             <i class="far fa-times-circle"></i>
                             @endif
                         </td>
-                        <td><a href="#" data-toggle="modal" data-target="#modal{{ $skill->id }}" class="btn btn-primary">Details</a></td>
-                        
-                    </tr>                        
-                @endforeach                    
+                        <td>
+                            <a href="#" data-toggle="modal" data-target="#modal{{ $skill->id }}" class="btn btn-primary">Details</a>
+                            <a href="#" data-toggle="modal" data-target="#modal-delete{{ $skill->id }}" class="btn btn-danger ml-1"><i class="far fa-times-circle"></i></a>
+                        </td>
+
+                    </tr>
+                @endforeach
             @endif
-            
-            
-            
+
+
+
             </tbody>
         </table>
         </div>
@@ -75,7 +78,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-            
+
                     <form action="{{ url('/admin/skill/' . $skill->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
@@ -104,12 +107,44 @@
 
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary mb-2">Submit</button>
                     </form>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- delete modal --}}
+        <div class="modal fade" id="modal-delete{{ $skill->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-delete{{ $skill->id }}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal">Delete {{ $skill->name }}?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="">Are you sure?</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="">This action can't be undone.</label>
+                        </div>
+
+                        <form action="{{ url('/admin/delete-skill/' . $skill->id) }}" method="POST">
+                            @csrf
+
+                    </div>
+                        <div class="modal-footer">
+                            <button type="" class="btn btn-primary mb-2" data-dismiss="modal" aria-label="Close">Cancel</button>
+                            <button type="submit" class="btn btn-danger mb-2">Delete</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -127,7 +162,7 @@
             </button>
         </div>
         <div class="modal-body">
-    
+
             <form action="{{ url('/admin/addskill') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
@@ -156,8 +191,8 @@
 
                 </div>
             </div>
-            
-            
+
+
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary mb-2">Submit</button>
             </form>

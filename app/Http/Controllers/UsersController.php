@@ -5,60 +5,66 @@ namespace App\Http\Controllers;
 use App\Job;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
-    public function __construct(){
-        
+    public function __construct()
+    {
+
         $this->middleware('auth', ['except' => [
-            'index', 'about', 'contact']
-            ]);
+            'index', 'about', 'contact'],
+        ]);
     }
 
     // Frontend 2019
-    public function index(){
+    public function index()
+    {
         $user = User::firstOrFail();
 
         // return view('frontend.index', [
         return view('frontend.2020-1.layouts.index', [
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
-    public function about(){
+    public function about()
+    {
         $user = User::firstOrFail();
         $jobs = Job::paginate(3);
 
         return view('frontend.about', [
             'user' => $user,
-            'jobs' => $jobs
+            'jobs' => $jobs,
         ]);
     }
 
-    public function contact(){
+    public function contact()
+    {
         $user = User::firstOrFail();
 
         return view('frontend.contact', [
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
     // Backend
-    public function profileView(){
+    public function profileView()
+    {
         $user = Auth::user();
 
         return view('backend.profile', [
-            'user' => $user
+            'user' => $user,
         ]);
     }
-    
-    public function updateProfile(Request $request){
+
+    public function updateProfile(Request $request)
+    {
         $user = Auth::user();
 
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required',
             'surname' => 'required',
             'github' => 'required',
@@ -70,9 +76,9 @@ class UsersController extends Controller
             'background' => 'image|max:1999',
 
             // 'email' => 'unique:users,email,' . $user->id,
-            'email' => ['required','email',Rule::unique('users','email')->ignore($user->id)],
+            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
 
-            'password' => 'nullable|min:8'
+            'password' => 'nullable|min:8',
         ]);
 
         if ($request->file('img')) {
@@ -101,9 +107,9 @@ class UsersController extends Controller
         $user->bio = $request->input('bio');
         $user->phone = $request->input('phone');
         // $user->active = $request->input('active');
-        
+
         // $user->img = $request->input('img');
-        
+
         $user->email = $request->input('email');
 
         if ($request->input('password')) {

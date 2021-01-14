@@ -8,28 +8,32 @@ use Illuminate\Support\Facades\Auth;
 
 class WorksController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
 
         $this->middleware('auth', ['except' => [
-            'work'
+            'work',
         ]]);
     }
 
-    public function work(){
+    public function work()
+    {
         $works = Work::paginate(4);
 
         return view('frontend.work', [
-            'works' => $works
+            'works' => $works,
         ]);
     }
 
-    public function workView(){
+    public function workView()
+    {
         $works = Work::all();
 
         return view('backend.work')->with('works', $works);
     }
 
-    public function addWork(Request $request){
+    public function addWork(Request $request)
+    {
         $user = Auth::user();
 
         $this->validate($request, [
@@ -39,7 +43,7 @@ class WorksController extends Controller
             'img' => 'required|image|max:1999',
             'url' => 'required',
             'github' => 'required',
-            'show' => 'required'
+            'show' => 'required',
         ]);
 
         $work = new Work();
@@ -66,7 +70,8 @@ class WorksController extends Controller
         return redirect('/admin/work')->with('message', 'Work added');
     }
 
-    public function updateWork(Request $request, $id){
+    public function updateWork(Request $request, $id)
+    {
         $work = Work::find($id);
 
         $this->validate($request, [
@@ -76,7 +81,7 @@ class WorksController extends Controller
             'img' => 'image|max:1999',
             'url' => 'required',
             'github' => 'required',
-            'show' => 'required'
+            'show' => 'required',
         ]);
 
         if ($request->file('img')) {
@@ -100,7 +105,8 @@ class WorksController extends Controller
         return redirect('/admin/work')->with('message', 'Work updated');
     }
 
-    public function deleteWork($workId) {
+    public function deleteWork($workId)
+    {
         $work = Work::find($workId);
         $work->delete();
 

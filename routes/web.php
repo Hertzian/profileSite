@@ -39,6 +39,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/skills', 'SkillsController@skillView');
     Route::post('/addskill', 'SkillsController@newSkill');
     Route::post('/skill/{skillId}', 'SkillsController@updateSkill');
+    Route::post('/delete-skill/{skillId}', 'SkillsController@deleteSkill');
 });
 
 // Route::get('/admin', 'HomeController@index')->name('home');

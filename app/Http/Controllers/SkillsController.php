@@ -8,23 +8,26 @@ use Illuminate\Support\Facades\Auth;
 
 class SkillsController extends Controller
 {
-    public function __contruct(){
+    public function __contruct()
+    {
         $this->middleware('auth');
     }
 
-    public function skillView(){
+    public function skillView()
+    {
         $skills = Skill::all();
 
         return view('backend.skills')->with('skills', $skills);
     }
 
-    public function newSkill(Request $request){
+    public function newSkill(Request $request)
+    {
         $user = Auth::user();
 
         $this->validate($request, [
             'name' => 'required',
             'value' => 'required|numeric',
-            'show' => 'required'
+            'show' => 'required',
         ]);
 
         $skill = new Skill();
@@ -38,13 +41,14 @@ class SkillsController extends Controller
         return redirect('/admin/skills')->with('message', 'Skill added');
     }
 
-    public function updateSkill(Request $request, $skillId){
+    public function updateSkill(Request $request, $skillId)
+    {
         $skill = Skill::find($skillId);
 
         $this->validate($request, [
             'name' => 'required',
             'value' => 'required|numeric',
-            'show' => 'required'
+            'show' => 'required',
         ]);
 
         $skill->name = $request->input('name');
@@ -53,5 +57,13 @@ class SkillsController extends Controller
         $skill->update();
 
         return redirect('/admin/skills')->with('message', 'Skill updated');
+    }
+
+    public function deleteSkill($skillId)
+    {
+        $skill = Skill::find($skillId);
+        $skill->delete();
+
+        return redirect('/admin/skills')->with('error', 'Skill deleted.');
     }
 }

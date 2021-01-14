@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Job;
+use App\Skill;
 use App\User;
 use App\Work;
-use App\Skill;
-use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
-use Illuminate\Support\Facades\Auth;
 
 class Interface2020_1Controller extends Controller
 {
-    public function data(){
+    public function data()
+    {
         $user = $this->hi();
         $jobs = $this->experience();
         $works = $this->work();
@@ -22,36 +21,41 @@ class Interface2020_1Controller extends Controller
             'user' => $user,
             'jobs' => $jobs,
             'skills' => $skills,
-            'works' => $works
+            'works' => $works,
         ];
     }
 
-    public function hi(){
+    public function hi()
+    {
         $user = User::firstOrFail();
 
         return $user;
     }
 
-    public function experience(){
+    public function experience()
+    {
         $exp = Job::all();
 
         return $exp;
     }
 
-    public function skill(){
+    public function skill()
+    {
         $skills = Skill::all();
 
         return $skills;
     }
 
-    public function work(){
+    public function work()
+    {
         $work = Work::all();
 
         return $work;
     }
 
     // data for views
-    public function index(){
+    public function index()
+    {
 
         return view('frontend.2020-1.layouts.index')->with([
             'user' => $this->data()['user'],
@@ -61,7 +65,8 @@ class Interface2020_1Controller extends Controller
         ]);
     }
 
-    public function pdfResume(){
+    public function pdfResume()
+    {
         return view('pdf.resume')->with([
             'user' => $this->data()['user'],
             'jobs' => $this->data()['jobs'],
@@ -69,7 +74,8 @@ class Interface2020_1Controller extends Controller
         ]);
     }
 
-    public function pdfResumeDownload(){
+    public function pdfResumeDownload()
+    {
         $pdf = PDF::loadview('pdf.resume', [
             'user' => $this->data()['user'],
             'jobs' => $this->data()['jobs'],
@@ -80,7 +86,8 @@ class Interface2020_1Controller extends Controller
         return $pdf->stream('EduardoAguilarCV.pdf');
     }
 
-    public function workDetail($workId){
+    public function workDetail($workId)
+    {
         $work = Work::find($workId);
 
         return view('frontend.2020-1.layouts.detail')->with('work', $work);

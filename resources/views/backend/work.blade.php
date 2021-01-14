@@ -140,25 +140,25 @@
         <div class="modal fade" id="modal-delete{{ $work->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-delete{{ $work->id }}" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modal">Delete {{ $work->name }}?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal">Delete {{ $work->name }}?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
 
-                    <div class="form-group">
-                        <label for="">Are you sure?</label>
-                    </div>
-                    <div class="form-group">
-                        <label for="">This action can't be undone.</label>
-                    </div>
+                        <div class="form-group">
+                            <label for="">Are you sure?</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="">This action can't be undone.</label>
+                        </div>
 
                         <form action="{{ url('/admin/delete-work/' . $work->id) }}" method="POST">
                             @csrf
 
-                </div>
+                    </div>
                         <div class="modal-footer">
                             <button type="" class="btn btn-primary mb-2" data-dismiss="modal" aria-label="Close">Cancel</button>
                             <button type="submit" class="btn btn-danger mb-2">Delete</button>
