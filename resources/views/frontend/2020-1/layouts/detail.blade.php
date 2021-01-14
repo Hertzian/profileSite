@@ -24,9 +24,9 @@
     <div class="portfolio-item-individual">
         <p><a class="btn" href="{{ $work->github }}">This is the repo</a></p>
         <p><a class="btn" href="{{ $work->url }}">You can visit {{ $work->name }} from here</a></p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad fugiat est nesciunt dolorem dolorum temporibus similique, dolore sit debitis distinctio iste officiis reiciendis eveniet amet possimus ducimus hic maiores incidunt.</p>
+        <p>{{ $work->description1}}</p>
         <img src="{{ url('storage/img/' . $work->img) }}" alt="a picture of project1">
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum eius tempora expedita illo enim debitis, dignissimos quos dolore distinctio ipsum delectus veniam molestias harum maxime tenetur laboriosam culpa, nihil autem!</p>
+        <p>{{ $work->description2}}</p>
     </div>
 
     @include('frontend.2020-1.partials.footer')
