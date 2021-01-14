@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class WorksController extends Controller
 {
     public function __construct(){
-        
+
         $this->middleware('auth', ['except' => [
             'work'
         ]]);
@@ -28,7 +28,7 @@ class WorksController extends Controller
 
         return view('backend.work')->with('works', $works);
     }
-    
+
     public function addWork(Request $request){
         $user = Auth::user();
 
@@ -41,7 +41,7 @@ class WorksController extends Controller
             'github' => 'required',
             'show' => 'required'
         ]);
-            
+
         $work = new Work();
 
         if ($request->file('img')) {
@@ -63,7 +63,7 @@ class WorksController extends Controller
 
         $work->save();
 
-        return redirect('/admin/work')->with('message', 'Work added');        
+        return redirect('/admin/work')->with('message', 'Work added');
     }
 
     public function updateWork(Request $request, $id){
@@ -97,6 +97,13 @@ class WorksController extends Controller
 
         $work->update();
 
-        return redirect('/admin/work')->with('message', 'Work updated');        
+        return redirect('/admin/work')->with('message', 'Work updated');
+    }
+
+    public function deleteWork($workId) {
+        $work = Work::find($workId);
+        $work->delete();
+
+        return redirect('/admin/work')->with('error', 'Work deleted.');
     }
 }

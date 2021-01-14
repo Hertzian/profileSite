@@ -34,7 +34,7 @@
             </tr>
             </tfoot>
             <tbody>
-            
+
             @if (count($works) >= 1)
                 @foreach ($works as $work)
                     <tr>
@@ -50,21 +50,24 @@
                             <i class="far fa-times-circle"></i>
                             @endif
                         </td>
-                        <td><a href="#" data-toggle="modal" data-target="#modal{{ $work->id }}" class="btn btn-primary">Details</a></td>
-                        
-                    </tr>                        
-                @endforeach                    
+                        <td>
+                            <a href="#" data-toggle="modal" data-target="#modal{{ $work->id }}" class="btn btn-primary">Details</a>
+                            <a href="#" data-toggle="modal" data-target="#modal-delete{{ $work->id }}" class="btn btn-danger ml-1"><i class="far fa-times-circle"></i></a>
+                        </td>
+
+                    </tr>
+                @endforeach
             @endif
-            
-            
-            
+
+
+
             </tbody>
         </table>
         </div>
     </div>
     <div class="card-footer small text-muted"> - </div>
 </div>
-    
+
 {{-- Modals --}}
 @if (count($works) >= 1)
     @foreach ($works as $work)
@@ -78,7 +81,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-            
+
                     <form action="{{ url('/admin/work/' . $work->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
@@ -123,12 +126,44 @@
 
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary mb-2">Submit</button>
                     </form>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- delete modal --}}
+        <div class="modal fade" id="modal-delete{{ $work->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-delete{{ $work->id }}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal">Delete {{ $work->name }}?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="">Are you sure?</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="">This action can't be undone.</label>
+                    </div>
+
+                        <form action="{{ url('/admin/delete-work/' . $work->id) }}" method="POST">
+                            @csrf
+
+                </div>
+                        <div class="modal-footer">
+                            <button type="" class="btn btn-primary mb-2" data-dismiss="modal" aria-label="Close">Cancel</button>
+                            <button type="submit" class="btn btn-danger mb-2">Delete</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -146,7 +181,7 @@
             </button>
         </div>
         <div class="modal-body">
-    
+
             <form action="{{ url('/admin/addwork') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
@@ -191,8 +226,8 @@
 
                 </div>
             </div>
-            
-            
+
+
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary mb-2">Submit</button>
             </form>

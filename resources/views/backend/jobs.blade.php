@@ -136,11 +136,12 @@
             </div>
         </div>
 
+        {{-- delete modal --}}
         <div class="modal fade" id="modal-delete{{ $job->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-delete{{ $job->id }}" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal">Delete {{ $job->company }}:</h5>
+                    <h5 class="modal-title" id="modal">Delete {{ $job->company }}?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                     </button>
@@ -157,10 +158,7 @@
                         <form action="{{ url('/admin/delete-job/' . $job->id) }}" method="POST">
                             @csrf
 
-
                 </div>
-
-
                         <div class="modal-footer">
                             <button type="" class="btn btn-primary mb-2" data-dismiss="modal" aria-label="Close">Cancel</button>
                             <button type="submit" class="btn btn-danger mb-2">Delete</button>

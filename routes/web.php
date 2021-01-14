@@ -35,6 +35,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/work','WorksController@workView');
     Route::post('/addwork','WorksController@addWork');
     Route::post('/work/{id}','WorksController@updateWork');
+    Route::post('/delete-work/{workId}','WorksController@deleteWork');
     Route::get('/skills', 'SkillsController@skillView');
     Route::post('/addskill', 'SkillsController@newSkill');
     Route::post('/skill/{skillId}', 'SkillsController@updateSkill');
