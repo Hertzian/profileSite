@@ -48,7 +48,7 @@
                                 <span class="job">{{ $job->job }}</span>
                             </div>
                         </div>
-                    
+
                     @endforeach
                 </div>
             </div>
@@ -73,12 +73,14 @@
                 <div class="grid">
 
                     @foreach ($skills as $skill)
-                        <div>
-                            <h3>{{ $skill->name }}</h3>
-                            <div class="progressbar">
-                                <div class="progressbarFill" style="width:{{ $skill->value }}%"></div>
+                        @if($skill->show == 1)
+                            <div>
+                                <h3>{{ $skill->name }}</h3>
+                                <div class="progressbar">
+                                    <div class="progressbarFill" style="width:{{ $skill->value }}%"></div>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -87,7 +89,7 @@
         </section>
 
 
-        
+
     </div>
 </body>
 </html>

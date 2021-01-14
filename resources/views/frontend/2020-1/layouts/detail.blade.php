@@ -26,7 +26,7 @@
         <p><a class="btn" href="{{ $work->url }}">You can visit {{ $work->name }} from here</a></p>
         <p>{{ $work->description1}}</p>
         <img src="{{ url('storage/img/' . $work->img) }}" alt="a picture of project1">
-        <p>{{ $work->description2}}</p>
+        <p>{{ $work->description2 }}</p>
     </div>
 
     @include('frontend.2020-1.partials.footer')
